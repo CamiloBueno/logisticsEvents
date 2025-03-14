@@ -29,3 +29,4 @@ We will follow the official Python version; PEP 8, which indicates:
   - Classes should be named using the UpperCamelCase convention, where each word starts with a capital letter and there are no spaces between words.
 
   - Methods should be named following the snake_case convention, in which all words are written in lowercase and separated from each other by underscores (_).
+"# logisticsEvents" 
