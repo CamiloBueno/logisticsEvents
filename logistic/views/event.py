@@ -65,12 +65,16 @@ def create_event(request):
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
+
     elif request.method == 'POST':
         try:
             user_events = User.objects.all(
             ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+
+            # 🔧 Pasamos el usuario al formulario, si configuraste EventForm para recibirlo
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
+
             if form.is_valid():
                 new_event = form.save(commit=False)
                 if not request.user.is_superuser:
@@ -84,9 +88,20 @@ def create_event(request):
                 send_mail(subject, message, from_email, recipient_list)
 
                 return redirect("home")
+
             else:
-                return render(request, 'create_event.html', {'formForEvents': form})
-        except:
+                # 👇 Aquí imprime el detalle de los errores del formulario en la consola
+                print("Errores del formulario:", form.errors)
+
+                return render(request, 'create_event.html', {
+                    'formForEvents': form,
+                    'error': 'Por favor, digite valores válidos'
+                })
+
+        except Exception as e:
+            # Mejor captura la excepción para ver el error real
+            print("Excepción al crear evento:", e)
+
             return render(request, "create_event.html", {
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'

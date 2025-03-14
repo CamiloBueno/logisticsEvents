@@ -26,7 +26,7 @@ def send_email_to_client(request):
         send_mail(
             'Calificación de servicio de apoyo logístico',  # Asunto del correo
             mensaje,  # Cuerpo del correo
-            'apoyologisticoccsa@gmail.com',  # Correo electrónico remitente
+            'camilo@phillipschristopher.com',  # Correo electrónico remitente
             [cliente_email],  # Lista de destinatarios
             fail_silently=False,
         )

@@ -49,9 +49,11 @@ INSTALLED_APPS = [
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'apoyologisticoccsa@gmail.com'
-EMAIL_HOST_PASSWORD = 'cfrqhiskdcuxeill'
+EMAIL_HOST_USER = 'camilobueno05@gmail.com'
+# tu contraseña de aplicación, sin espacios
+EMAIL_HOST_PASSWORD = 'xuitnukdyoqqkhfc'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # settings.py
 
 
@@ -95,15 +97,8 @@ WSGI_APPLICATION = 'CCSA_LogisticTeam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'uipgzidh',
-        'USER': 'uipgzidh',
-        'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
-        'HOST': 'salt.db.elephantsql.com',
-        'PORT': '5432',
-        "TEST": {
-            "MIRROR": "default",
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Esto guarda el archivo en tu proyecto
     }
 }
 
